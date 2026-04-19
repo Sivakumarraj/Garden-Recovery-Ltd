@@ -47,7 +47,7 @@ const Services = () => {
             >
               <div className="rounded-2xl overflow-hidden shadow-lg aspect-[4/3]">
                 <img 
-                  src="/src/assets/images/services/lawn-care.jpg" 
+                  src="/images/services/lawn-care.jpg" 
                   alt="Lawn Care" 
                   className="w-full h-full object-cover"
                 />
@@ -86,7 +86,7 @@ const Services = () => {
             >
               <div className="rounded-2xl overflow-hidden shadow-lg aspect-[4/3]">
                 <img 
-                  src="/src/assets/images/services/landscaping.jpg" 
+                  src="/images/services/landscaping.jpg" 
                   alt="Landscaping" 
                   className="w-full h-full object-cover"
                 />
@@ -125,7 +125,7 @@ const Services = () => {
             >
               <div className="rounded-2xl overflow-hidden shadow-lg aspect-[4/3]">
                 <img 
-                  src="/src/assets/images/services/tree-trimming.jpg" 
+                  src="/images/services/tree-trimming.jpg" 
                   alt="Tree Trimming" 
                   className="w-full h-full object-cover"
                 />

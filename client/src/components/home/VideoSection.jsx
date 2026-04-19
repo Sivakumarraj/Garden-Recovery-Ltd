@@ -4,10 +4,10 @@ import { FaPlay } from 'react-icons/fa'
 
 const VideoSection = () => {
   const videos = [
-    { id: 1, title: 'Lawn Maintenance', thumbnail: '/src/assets/images/services/lawn-care.jpg' },
-    { id: 2, title: 'Landscaping Project', thumbnail: '/src/assets/images/services/landscaping.jpg' },
-    { id: 3, title: 'Tree Surgery', thumbnail: '/src/assets/images/services/tree-trimming.jpg' },
-    { id: 4, title: 'Garden Design', thumbnail: '/src/assets/images/gallery/img1.jpg' }
+    { id: 1, title: 'Lawn Maintenance', thumbnail: '/images/services/lawn-care.jpg' },
+    { id: 2, title: 'Landscaping Project', thumbnail: '/images/services/landscaping.jpg' },
+    { id: 3, title: 'Tree Surgery', thumbnail: '/images/services/tree-trimming.jpg' },
+    { id: 4, title: 'Garden Design', thumbnail: '/images/gallery/img1.jpg' }
   ]
 
   return (

@@ -15,7 +15,7 @@ const Home = () => {
         <meta name="description" content="Transform your outdoor space with professional gardening, landscaping, and tree care services from Garden Recovery Ltd." />
         <meta property="og:title" content="Garden Recovery Ltd | Expert Gardening Services" />
         <meta property="og:description" content="Professional gardening and landscaping services to transform your outdoor space." />
-        <meta property="og:image" content="/src/assets/images/hero/hero-bg.jpg" />
+        <meta property="og:image" content="/images/hero/hero-bg.jpg" />
       </Helmet>
       
       <Hero />

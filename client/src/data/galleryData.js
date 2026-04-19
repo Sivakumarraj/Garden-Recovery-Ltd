@@ -13,8 +13,8 @@ const generateGalleryImages = () => {
       id: i,
       category: category,
       type: 'image',
-      src: `/src/assets/images/gallery/thumbnails/img${i}.jpg`,
-      thumbnail: `/src/assets/images/gallery/thumbnails/img${i}.jpg`,
+      src: `/images/gallery/thumbnails/img${i}.jpg`,
+      thumbnail: `/images/gallery/thumbnails/img${i}.jpg`,
       title: `Garden Project ${i}`,
       description: `Professional garden transformation project showcasing our ${category} expertise.`
     })
