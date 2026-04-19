@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 120 20% 98%;
+    --foreground: 150 30% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 150 30% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 150 30% 12%;
+    --primary: 145 63% 32%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 120 15% 95%;
+    --secondary-foreground: 150 30% 14%;
+    --muted: 120 10% 94%;
+    --muted-foreground: 150 10% 40%;
+    --accent: 145 30% 94%;
+    --accent-foreground: 145 63% 32%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 120 10% 90%;
+    --input: 120 10% 90%;
+    --ring: 145 63% 32%;
+    --radius: 0.75rem;
+  }
+  
+  * {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    @apply font-sans antialiased overflow-x-hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold;
+    color: hsl(var(--foreground));
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-7xl leading-tight tracking-tighter;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl tracking-tight;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform active:scale-95 shadow-sm hover:shadow-md;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent hover:bg-white/10 text-white font-semibold py-3 px-8 rounded-lg border border-white/30 transition-all duration-300 transform active:scale-95;
+  }
+  
+  .btn-outline {
+    @apply bg-transparent hover:bg-primary text-primary hover:text-white font-semibold py-3 px-8 rounded-lg border-2 border-primary transition-all duration-300;
+  }
+  
+  .section-padding {
+    @apply py-20 md:py-24 lg:py-32;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden border border-gray-100;
+  }
+  
+  .gradient-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+  }
+}
