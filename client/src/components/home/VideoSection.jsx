@@ -23,7 +23,7 @@ const ScrollVideo = ({ video, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="relative overflow-hidden rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 bg-black"
+      className="relative overflow-hidden rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 bg-black group"
     >
       <div className="aspect-[16/10]">
         <video
@@ -33,7 +33,8 @@ const ScrollVideo = ({ video, index }) => {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
+          controls
+          className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
         />
       </div>
     </motion.div>
