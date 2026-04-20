@@ -25,11 +25,14 @@ const Navbar = () => {
 
   const isActive = (path) => location.pathname === path
 
+  const isHomePage = location.pathname === '/'
+  const isDarkNav = isHomePage && !scrolled // True only on Home page at the top
+
   return (
     <nav className={`fixed w-full z-50 transition-all duration-500 ${
       scrolled 
-        ? 'bg-white/80 backdrop-blur-xl border-b border-gray-100 py-3 shadow-sm' 
-        : 'bg-transparent py-5'
+        ? 'bg-white/90 backdrop-blur-xl border-b border-gray-100 py-3 shadow-sm' 
+        : isHomePage ? 'bg-transparent py-5' : 'bg-white/90 backdrop-blur-xl py-4 shadow-sm'
     }`}>
       <div className="container-custom">
         <div className="flex justify-between items-center relative">
@@ -37,7 +40,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center relative z-10">
             <img src="/logo.png" alt="Garden Recovery Logo" className="h-10 md:h-12 w-auto" />
             <span className={`ml-3 font-display font-bold text-xl md:text-2xl transition-colors duration-300 ${
-              scrolled ? 'text-primary' : 'text-white'
+              isDarkNav ? 'text-white' : 'text-primary'
             }`}>
               Garden Recovery Ltd
             </span>
@@ -51,14 +54,14 @@ const Navbar = () => {
                 to={link.path}
                 className={`text-[15px] font-medium tracking-wide transition-all duration-300 relative group ${
                   isActive(link.path)
-                    ? scrolled ? 'text-primary' : 'text-white'
-                    : scrolled ? 'text-gray-600 hover:text-primary' : 'text-white/80 hover:text-white'
+                    ? isDarkNav ? 'text-white' : 'text-primary'
+                    : isDarkNav ? 'text-white/80 hover:text-white' : 'text-gray-600 hover:text-primary'
                 }`}
               >
                 {link.label}
                 <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 ${
                   isActive(link.path) ? 'w-full' : 'group-hover:w-full'
-                } ${scrolled ? 'bg-primary' : 'bg-white'}`}></span>
+                } ${isDarkNav ? 'bg-white' : 'bg-primary'}`}></span>
               </Link>
             ))}
           </div>
@@ -66,16 +69,16 @@ const Navbar = () => {
           {/* CTA Button - Right */}
           <div className="hidden lg:block relative z-10">
             <Link to="/contact" className={`btn-primary px-6 py-2.5 text-sm ${
-              !scrolled && 'bg-white text-primary border-none hover:bg-gray-100 shadow-md'
+              isDarkNav && 'bg-white text-primary border-none hover:bg-gray-100 shadow-md'
             }`}>
               Get Free Quote
             </Link>
           </div>
 
           <button
-            className="lg:hidden text-2xl relative z-10"
+            className="lg:hidden text-2xl relative z-10 transition-colors duration-300"
             onClick={() => setIsOpen(!isOpen)}
-            style={{ color: scrolled ? '#1E8449' : 'white' }}
+            style={{ color: isDarkNav ? 'white' : '#1E8449' }}
           >
             {isOpen ? <HiX /> : <HiMenu />}
           </button>
