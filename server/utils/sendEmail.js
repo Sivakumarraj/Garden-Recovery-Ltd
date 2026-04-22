@@ -1,38 +1,61 @@
-import nodemailer from 'nodemailer'
-
-const createTransporter = () => {
-  return nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
-    port: process.env.EMAIL_PORT,
-    secure: false,
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  })
-}
+import { Resend } from 'resend'
 
 export const sendContactEmail = async (contactData) => {
-  const transporter = createTransporter()
+  // Use the API key provided in the environment variables
+  const resend = new Resend(process.env.RESEND_API_KEY)
+  
+  const adminEmail = 'Gardenrecovery95@gmail.com'
+  // Note: Resend requires a verified domain to send FROM. 'onboarding@resend.dev' is their default testing address.
+  // Once the user verifies their domain on Resend, they should change this to info@their-domain.com
+  const senderEmail = 'onboarding@resend.dev'
 
-  const mailOptions = {
-    from: `"Garden Recovery Ltd" <${process.env.EMAIL_FROM}>`,
-    to: process.env.EMAIL_TO,
-    subject: `New Contact Form - ${contactData.name}`,
-    html: `
-      <h2>New Contact Form Submission</h2>
-      <p><strong>Name:</strong> ${contactData.name}</p>
-      <p><strong>Email:</strong> ${contactData.email}</p>
-      <p><strong>Phone:</strong> ${contactData.phone}</p>
-      <p><strong>Service:</strong> ${contactData.service}</p>
-      <p><strong>Message:</strong></p>
-      <p>${contactData.message}</p>
-      <hr>
-      <p><small>Submitted: ${new Date().toLocaleString()}</small></p>
-    `,
+  try {
+    // 1. Send email to Admin
+    const adminResponse = await resend.emails.send({
+      from: `Website Lead <${senderEmail}>`,
+      to: adminEmail,
+      subject: `New Lead: ${contactData.name}`,
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${contactData.name}</p>
+        <p><strong>Email:</strong> ${contactData.email}</p>
+        <p><strong>Phone:</strong> ${contactData.phone}</p>
+        <p><strong>Message:</strong></p>
+        <p>${contactData.message}</p>
+        <hr>
+        <p><small>Submitted: ${new Date().toLocaleString()}</small></p>
+      `
+    })
+    console.log('Admin email sent:', adminResponse)
+
+    // 2. Send confirmation email to the Client
+    const clientResponse = await resend.emails.send({
+      from: `Garden Recovery Ltd <${senderEmail}>`,
+      to: contactData.email,
+      subject: `Thank you for contacting Garden Recovery Ltd!`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #247A4D;">Hello ${contactData.name},</h2>
+          <p>Thank you for reaching out to Garden Recovery Ltd! This is an automated message to confirm that we have successfully received your inquiry.</p>
+          <p>One of our team members will review your message and get back to you shortly.</p>
+          
+          <div style="background-color: #f8f9fa; padding: 15px; border-left: 4px solid #247A4D; margin: 20px 0;">
+            <p style="margin-top: 0;"><strong>Your Message:</strong></p>
+            <p style="font-style: italic; color: #555;">"${contactData.message}"</p>
+          </div>
+          
+          <p>If you need immediate assistance, please call us at <strong>07562 240691</strong>.</p>
+          <br>
+          <p>Best regards,</p>
+          <p><strong>The Garden Recovery Team</strong></p>
+        </div>
+      `
+    })
+    console.log('Client confirmation email sent:', clientResponse)
+
+    return { adminResponse, clientResponse }
+  } catch (error) {
+    console.error('Resend email error:', error)
+    throw new Error('Failed to send email via Resend')
   }
-
-  const info = await transporter.sendMail(mailOptions)
-  console.log('Email sent:', info.messageId)
-  return info
 }

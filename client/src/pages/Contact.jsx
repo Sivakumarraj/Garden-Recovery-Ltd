@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
-import emailjs from '@emailjs/browser'
 import { Phone, Mail, MapPin } from 'lucide-react'
 import { FaTiktok, FaFacebookF, FaInstagram, FaEnvelope } from 'react-icons/fa'
+import { submitContactForm } from '../services/api'
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -14,25 +14,16 @@ const Contact = () => {
   const onSubmit = async (data) => {
     setIsSubmitting(true)
     try {
-      const templateParams = {
-        from_name: data.name,
-        from_email: data.email,
-        phone: data.phone,
-        message: data.message,
-        to_name: 'Garden Recovery Ltd'
+      const response = await submitContactForm(data)
+
+      if (response.success) {
+        setSubmitStatus('success')
+        reset()
+      } else {
+        setSubmitStatus('error')
       }
-
-      await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        templateParams,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      )
-
-      setSubmitStatus('success')
-      reset()
     } catch (error) {
-      console.error('Email error:', error)
+      console.error('Submission error:', error)
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)
