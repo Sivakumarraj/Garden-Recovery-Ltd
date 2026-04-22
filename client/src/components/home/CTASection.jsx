@@ -26,7 +26,7 @@ const CTASection = () => {
               Get Free Quote
             </Link>
             <a 
-              href="tel:+441234567890" 
+              href="tel:07562240691" 
               className="bg-transparent hover:bg-white/10 text-white font-semibold py-4 px-8 rounded-lg border-2 border-white transition-all duration-300 transform hover:scale-105"
             >
               Call Us Now

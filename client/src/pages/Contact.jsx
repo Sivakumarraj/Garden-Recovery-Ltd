@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import emailjs from '@emailjs/browser'
 import { Phone, Mail, MapPin } from 'lucide-react'
-import { FaWhatsapp, FaFacebookF, FaInstagram, FaEnvelope } from 'react-icons/fa'
+import { FaTiktok, FaFacebookF, FaInstagram, FaEnvelope } from 'react-icons/fa'
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -78,8 +78,11 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-lg mb-1">Phone</h3>
-                  <a href="tel:+447712345678" className="text-muted-foreground hover:text-primary transition-colors">
-                    +44 (0) 7712 345 678
+                  <a href="tel:07562240691" className="text-muted-foreground hover:text-primary transition-colors block">
+                    07562 240691
+                  </a>
+                  <a href="tel:07714314156" className="text-muted-foreground hover:text-primary transition-colors block">
+                    07714 314156
                   </a>
                 </div>
               </div>
@@ -90,8 +93,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-lg mb-1">Email</h3>
-                  <a href="mailto:robertfrendo@hotmail.co.uk" className="text-muted-foreground hover:text-primary transition-colors">
-                    robertfrendo@hotmail.co.uk
+                  <a href="mailto:Gardenrecovery95@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                    Gardenrecovery95@gmail.com
                   </a>
                 </div>
               </div>
@@ -103,7 +106,7 @@ const Contact = () => {
                 <div>
                   <h3 className="font-display font-bold text-lg mb-1">Address</h3>
                   <span className="text-muted-foreground">
-                    123 Garden Street, Green City
+                    Chelmsford, Essex
                   </span>
                 </div>
               </div>
@@ -112,16 +115,16 @@ const Contact = () => {
             <div>
               <h3 className="font-display font-bold text-xl mb-6">Follow Us</h3>
               <div className="flex space-x-4">
-                <a href="#" className="w-12 h-12 rounded-full bg-[#EAF0E8] text-[#247A4D] flex items-center justify-center hover:bg-[#247A4D] hover:text-white transition-colors">
-                  <FaWhatsapp className="w-5 h-5" />
-                </a>
-                <a href="#" className="w-12 h-12 rounded-full bg-[#EAF0E8] text-[#247A4D] flex items-center justify-center hover:bg-[#247A4D] hover:text-white transition-colors">
+                <a href="https://www.facebook.com/share/17N2H7Stc5/" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-[#EAF0E8] text-[#247A4D] flex items-center justify-center hover:bg-[#247A4D] hover:text-white transition-colors">
                   <FaFacebookF className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-12 h-12 rounded-full bg-[#EAF0E8] text-[#247A4D] flex items-center justify-center hover:bg-[#247A4D] hover:text-white transition-colors">
+                <a href="https://www.instagram.com/garden_recovery_?igsh=MTVqYjdlM3J2aXpheg==" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-[#EAF0E8] text-[#247A4D] flex items-center justify-center hover:bg-[#247A4D] hover:text-white transition-colors">
                   <FaInstagram className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-12 h-12 rounded-full bg-[#EAF0E8] text-[#247A4D] flex items-center justify-center hover:bg-[#247A4D] hover:text-white transition-colors">
+                <a href="https://www.tiktok.com/@_garden_recovery_essex_" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-[#EAF0E8] text-[#247A4D] flex items-center justify-center hover:bg-[#247A4D] hover:text-white transition-colors">
+                  <FaTiktok className="w-5 h-5" />
+                </a>
+                <a href="mailto:Gardenrecovery95@gmail.com" className="w-12 h-12 rounded-full bg-[#EAF0E8] text-[#247A4D] flex items-center justify-center hover:bg-[#247A4D] hover:text-white transition-colors">
                   <FaEnvelope className="w-5 h-5" />
                 </a>
               </div>

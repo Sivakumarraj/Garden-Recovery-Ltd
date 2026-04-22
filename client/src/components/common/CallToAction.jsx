@@ -24,7 +24,7 @@ const CallToAction = () => {
             Get Free Quote
           </Link>
           <a 
-            href="tel:+447712345678" 
+            href="tel:07562240691" 
             className="px-8 py-4 bg-transparent text-white border border-white/40 font-bold rounded hover:bg-white/10 transition-colors"
           >
             Call Now
