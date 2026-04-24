@@ -25,7 +25,13 @@ const limiter = rateLimit({
 app.use('/api/', limiter)
 
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: [
+    'http://localhost:5173',
+    'https://garden-recovery-ltd.onrender.com',
+    'https://gardenrecovery.co.uk',
+    'https://www.gardenrecovery.co.uk',
+    process.env.CLIENT_URL
+  ].filter(Boolean),
   credentials: true
 }))
 app.use(express.json())
