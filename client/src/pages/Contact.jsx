@@ -159,6 +159,21 @@ const Contact = () => {
               </div>
 
               <div>
+                <label className="block text-sm font-medium text-foreground mb-2">Service Type</label>
+                <select
+                  {...register('service', { required: 'Please select a service' })}
+                  className="w-full px-4 py-3 bg-[#FAFAFA] border border-gray-200 rounded text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                >
+                  <option value="">Select a service...</option>
+                  <option value="lawn-care">Lawn Care & Maintenance</option>
+                  <option value="landscaping">Landscaping & Design</option>
+                  <option value="tree-trimming">Tree & Hedge Work</option>
+                  <option value="other">Other / General Inquiry</option>
+                </select>
+                {errors.service && <p className="text-red-500 text-sm mt-1">{errors.service.message}</p>}
+              </div>
+
+              <div>
                 <label className="block text-sm font-medium text-foreground mb-2">Phone</label>
                 <input
                   type="tel"
