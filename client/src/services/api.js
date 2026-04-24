@@ -1,7 +1,14 @@
 import axios from 'axios'
 
 // Base API URL from environment variables
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+let API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+
+// Ensure URL ends with /api to avoid 404s on endpoints like /contact
+if (API_URL.endsWith('.onrender.com')) {
+  API_URL = `${API_URL}/api`
+} else if (!API_URL.endsWith('/api') && !API_URL.includes('localhost')) {
+  API_URL = `${API_URL}/api`
+}
 
 // Create axios instance with default configuration
 const api = axios.create({
