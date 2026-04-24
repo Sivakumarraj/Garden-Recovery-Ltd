@@ -5,9 +5,10 @@ export const sendContactEmail = async (contactData) => {
   const resend = new Resend(process.env.RESEND_API_KEY)
   
   const adminEmail = 'Gardenrecovery95@gmail.com'
-  // Note: Resend requires a verified domain to send FROM. 'onboarding@resend.dev' is their default testing address.
-  // Once the user verifies their domain on Resend, they should change this to info@their-domain.com
-  const senderEmail = 'onboarding@resend.dev'
+  
+  // Use the verified domain email from environment variables (e.g. info@yourdomain.com)
+  // If not set, it will safely fallback to the resend testing email.
+  const senderEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev'
 
   try {
     // 1. Send email to Admin
