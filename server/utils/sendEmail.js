@@ -100,7 +100,12 @@ export const sendContactEmail = async (contactData) => {
 
     return { adminResponse, clientResponse }
   } catch (error) {
-    console.error('Resend email error:', error)
-    throw new Error('Failed to send email via Resend')
+    console.error('RESEND ERROR DETAILS:', {
+      message: error.message,
+      stack: error.stack,
+      name: error.name,
+      code: error.code
+    })
+    throw new Error(`Email Service Error: ${error.message}`)
   }
 }

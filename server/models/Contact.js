@@ -12,7 +12,7 @@ const contactSchema = new mongoose.Schema({
     required: [true, 'Email is required'],
     trim: true,
     lowercase: true,
-    match: [/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a valid email']
+    match: [/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Please enter a valid email']
   },
   phone: {
     type: String,
@@ -21,13 +21,11 @@ const contactSchema = new mongoose.Schema({
   },
   service: {
     type: String,
-    required: [true, 'Service type is required'],
-    enum: ['lawn-care', 'landscaping', 'tree-trimming', 'other']
+    required: [true, 'Service type is required']
   },
   message: {
     type: String,
-    required: [true, 'Message is required'],
-    minlength: [10, 'Message must be at least 10 characters']
+    required: [true, 'Message is required']
   },
   status: {
     type: String,
