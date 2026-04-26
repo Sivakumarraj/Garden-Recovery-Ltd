@@ -41,8 +41,19 @@ app.use(morgan('dev'))
 app.use('/api/contact', contactRoutes)
 app.use('/api/testimonials', testimonialRoutes)
 
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'OK', message: 'Server is running' })
+app.get('/api/health', async (req, res) => {
+  const dbStatus = mongoose.connection.readyState === 1 ? 'CONNECTED' : 'DISCONNECTED'
+  res.json({ 
+    status: 'OK', 
+    message: 'Server is running',
+    database: dbStatus,
+    env: {
+      hasMongoUri: !!process.env.MONGODB_URI,
+      hasResendKey: !!process.env.RESEND_API_KEY,
+      hasFromEmail: !!process.env.RESEND_FROM_EMAIL,
+      clientUrl: process.env.CLIENT_URL || 'Not Set'
+    }
+  })
 })
 
 app.use(errorHandler)
